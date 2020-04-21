@@ -238,4 +238,11 @@ describe('Email', () => {
         const res = Email.send(UserTest);
         expect(res).toBe(true);
     })
+    it('should return false thanks to mock function', () => {
+        const UserTest = new User('charles.vanhamme@gmail.com', 'Van Hamme', 'Charles', null, 18);
+        const Email = new EmailService();
+        Email.send = jest.fn().mockReturnValue(false);
+        const res = Email.send(UserTest);
+        expect(res).toBe(false);
+    })
 })
